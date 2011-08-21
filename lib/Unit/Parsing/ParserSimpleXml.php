@@ -125,14 +125,23 @@ class ParserSimpleXml implements ParserInterface
       $factor = (string)$attributes->factor;
       $delta  = (string)$attributes->delta;
 
-      if (is_int($factor)) {
+      // FIXME: Something needs fixing here: converting to int always gives a
+      // false positive, if attribute is not set it will silentely give us
+      // an empty string, which will give 0.
+      if (!strlen($factor)) {
+        $factor = 1;
+      }
+      else if (is_int($factor)) {
         $factor = (int)$factor;
       }
       else {
         $factor = (float)$factor;
       }
 
-      if (is_int($delta)) {
+      if (!strlen($delta)) {
+        $delta = 0;
+      }
+      else if (is_int($delta)) {
         $delta = (int)$delta;
       }
       else {

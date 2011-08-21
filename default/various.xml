@@ -60,13 +60,12 @@
             <Convert to="204" factor="7" />
         </Unit>
         <!-- Temperature. -->
-        <Unit code="300" type="4" name="Celsius" symbol="C" plural="Celsius" />
-        <Unit code="301" type="4" name="Kelvin" symbol="K" plural="Kelvin">
-            <Convert to="300" delta="-273.15" />
+        <Unit code="300" type="4" name="Celsius" symbol="C" plural="Celsius">
+            <Convert to="302" factor="1.8" delta="-32" />
+            <Convert to="301" delta="273.15" />
         </Unit>
-        <Unit code="302" type="4" name="Fahrenheit" symbol="F" plural="Fahrenheit">
-            <Convert to="300" factor="1.8" delta="32" />
-        </Unit>
+        <Unit code="301" type="4" name="Kelvin" symbol="K" plural="Kelvin" />
+        <Unit code="302" type="4" name="Fahrenheit" symbol="F" plural="Fahrenheit" />
         <Unit code="303" type="4" name="Rankine" symbol="R" plural="Rankine">
             <Convert to="302" delta="459.6" />
         </Unit>

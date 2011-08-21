@@ -39,7 +39,7 @@ class Operation
    * @param int|float $b
    */
   public function compute($value) {
-    return $value * $this->_factor + $this->_delta;
+    return ($value * $this->_factor) + $this->_delta;
   }
 
   /**
@@ -48,7 +48,7 @@ class Operation
    * @return Operation
    */
   public function getOpposite() {
-    return new self(1 / $this->_factor, 0 - $this->_delta);
+    return new self(1 / $this->_factor, (0 - $this->_delta));
   }
 
   /**

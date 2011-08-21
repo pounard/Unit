@@ -87,7 +87,7 @@ print "12 m in ft: "    . UnitHelper::convert(12,   'm',  'ft') . "\n";
 print "27 in in cm: "   . UnitHelper::convert(27,   'in', 'cm') . "\n";
 print "5.12 km in m: "  . UnitHelper::convert(5.12, 'km', 'm')  . "\n";
 print "20 °C in °K: "   . UnitHelper::convert(20,   'C',  'K')  . "\n";
-print "20 °C in °F: "   . UnitHelper::convert(20,   'C',  'F')  . "\n";
+print "80 °F in °C: "   . UnitHelper::convert(80,   'F',  'C')  . "\n";
 
 $memoryFree   = memory_get_usage();
 
