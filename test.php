@@ -62,7 +62,7 @@ print "e to f: " . $e->find($f) . "\n";
 $timeBegin   = microtime(TRUE);
 $memoryBegin = memory_get_usage();
 
-$table       = new ParserTable(new ParserSimpleXml(__DIR__ . '/default/distance.xml'));
+$table       = new ParserTable(new ParserSimpleXml(__DIR__ . '/default/various.xml'));
 
 $timeParse   = microtime(TRUE);
 $memoryParse = memory_get_usage();
@@ -86,14 +86,14 @@ print "Some conversions:\n";
 print "12 m in ft: "    . UnitHelper::convert(12,   'm',  'ft') . "\n";
 print "27 in in cm: "   . UnitHelper::convert(27,   'in', 'cm') . "\n";
 print "5.12 km in m: "  . UnitHelper::convert(5.12, 'km', 'm')  . "\n";
+print "20 °C in °K: "   . UnitHelper::convert(20,   'C',  'K')  . "\n";
+print "20 °C in °F: "   . UnitHelper::convert(20,   'C',  'F')  . "\n";
 
 $memoryFree   = memory_get_usage();
 
-$cpuTable    = new ParserTable(new ParserSimpleXml(__DIR__ . '/default/cpu.xml'));
-
-$b  = $cpuTable->getUnitBySymbol('b');
-$kb = $cpuTable->getUnitBySymbol('kb');
-$ms = $cpuTable->getUnitBySymbol('ms');
+$b  = $table->getUnitBySymbol('b');
+$kb = $table->getUnitBySymbol('kb');
+$ms = $table->getUnitBySymbol('ms');
 
 $memBefore   = new Value($memoryBegin,                $b);
 $memAfter    = new Value($memoryFree,                 $b);

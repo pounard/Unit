@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Various conversion tables. This file is on purpose incomplete for testing
+    purpose: testing the matrix auto-populate. 
+-->
+<UnitTable>
+    <Types>
+        <Type code="1" name="Distance" />
+        <Type code="2" name="Memory" />
+        <Type code="3" name="Time" />
+        <Type code="4" name="Temperature" />
+    </Types>
+    <Systems>
+        <System type="1" code="1" name="Metric" />
+        <System type="1" code="2" name="Imperial" />
+    </Systems>
+	<Units>
+	    <!-- Metric units -->
+        <Unit code="5" type="1" system="1" name="Milimeter" symbol="mm" plural="Milimeters" />
+        <Unit code="3" type="1" system="1" name="Centimeter" symbol="cm" plural="Centimeters" />
+        <Unit code="4" type="1" system="1" name="Decimeter" symbol="dm" plural="Decimeters" />
+        <Unit code="1" type="1" system="1" name="Meter" symbol="m" plural="Meters">
+            <Convert to="5" factor="1000" />
+            <Convert to="3" factor="100" />
+            <Convert to="4" factor="10" />
+        </Unit>
+        <Unit code="2" type="1" system="1" name="Kilometer" symbol="km" plural="Kilometers">
+            <Convert to="1" factor="1000" />
+        </Unit>
+        <!-- Imperial units -->
+        <Unit code="7" type="1" system="2" name="Inch" symbol="in" plural="Inches">
+            <Convert to="3" factor="2.54" />
+        </Unit>
+		<Unit code="8" type="1" system="2" name="Foot" symbol="ft" plural="Feet">
+            <Convert to="7" factor="12" />
+        </Unit>
+        <!-- Memory -->
+        <Unit code="100" type="2" name="Byte" symbol="b" plural="Bytes" />
+        <Unit code="101" type="2" name="Kilobyte" symbol="kb" plural="Kilobytes">
+            <Convert to="100" factor="1024" />
+        </Unit>
+        <Unit code="102" type="2" name="Megabyte" symbol="Mb" plural="Megabytes">
+            <Convert to="101" factor="1024" />
+        </Unit>
+        <!-- Time -->
+        <Unit code="200" type="3" name="Milisecond" symbol="ms" plural="Miliseconds" />
+        <Unit code="201" type="3" name="Second" symbol="s" plural="Seconds">
+            <Convert to="200" factor="1000" />
+        </Unit>
+        <Unit code="202" type="3" name="Minute" symbol="min" plural="Minutes">
+            <Convert to="201" factor="60" />
+        </Unit>
+        <Unit code="203" type="3" name="Hour" symbol="h" plural="Hours">
+            <Convert to="202" factor="60" />
+        </Unit>
+        <Unit code="204" type="3" name="Day" symbol="d" plural="Days">
+            <Convert to="203" factor="24" />
+        </Unit>
+        <Unit code="205" type="3" name="Week" symbol="week" plural="Weeks">
+            <Convert to="204" factor="7" />
+        </Unit>
+        <!-- Temperature. -->
+        <Unit code="300" type="4" name="Celsius" symbol="C" plural="Celsius" />
+        <Unit code="301" type="4" name="Kelvin" symbol="K" plural="Kelvin">
+            <Convert to="300" delta="-273.15" />
+        </Unit>
+        <Unit code="302" type="4" name="Fahrenheit" symbol="F" plural="Fahrenheit">
+            <Convert to="300" factor="1.8" delta="32" />
+        </Unit>
+        <Unit code="303" type="4" name="Rankine" symbol="R" plural="Rankine">
+            <Convert to="302" delta="459.6" />
+        </Unit>
+	</Units>
+</UnitTable>
