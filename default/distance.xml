@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<UnitTable>
+    <Types>
+        <Type code="1" name="Distance" />
+    </Types>
+    <Systems>
+        <System type="1" code="1" name="Metric" />
+        <System type="1" code="2" name="Imperial" />
+    </Systems>
+	<Units>
+	    <!-- Metric units -->
+        <Unit code="5" type="1" system="1" name="Milimeter" symbol="mm" plural="Milimeters" />
+        <Unit code="3" type="1" system="1" name="Centimeter" symbol="cm" plural="Centimeters" />
+        <Unit code="4" type="1" system="1" name="Decimeter" symbol="dm" plural="Decimeters" />
+        <Unit code="1" type="1" system="1" name="Meter" symbol="m" plural="Meters">
+            <Convert to="5" factor="1000" />
+            <Convert to="3" factor="100" />
+            <Convert to="4" factor="10" />
+        </Unit>
+        <Unit code="2" type="1" system="1" name="Kilometer" symbol="km" plural="Kilometers">
+            <Convert to="1" factor="1000" />
+        </Unit>
+        <!-- Imperial units -->
+        <Unit code="7" type="1" system="2" name="Inch" symbol="in" plural="Inches">
+            <Convert to="3" factor="2.54" />
+        </Unit>
+		<Unit code="8" type="1" system="2" name="Foot" symbol="ft" plural="Feet">
+            <Convert to="7" factor="12" />
+        </Unit>
+	</Units>
+</UnitTable>
