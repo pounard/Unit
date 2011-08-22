@@ -1,6 +1,6 @@
 <?php
 
-// use Graph\Node;
+use Graph\Node;
 use Unit\Parsing\ParserSimpleXml;
 use Unit\Reference\ParserTable;
 use Unit\Unit;
@@ -27,7 +27,6 @@ spl_autoload_register(function ($classname) {
  * Graph test.
  */
 
-/*
 $a = new Node('a');
 $b = new Node('b');
 $c = new Node('c');
@@ -52,8 +51,6 @@ $e->addLink($g);
 print "a to f: " . $a->find('f') . "\n";
 print "b to g: " . $b->find('g') . "\n";
 print "e to f: " . $e->find($f) . "\n";
-
- */
 
 /*
  * Parser test.
