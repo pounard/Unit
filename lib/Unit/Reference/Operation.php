@@ -4,68 +4,68 @@ namespace Unit\Reference;
 
 class Operation
 {
-  /**
-   * @var float
-   */
-  protected $_factor = 1;
+    /**
+     * @var float
+     */
+    protected $factor = 1;
 
-  /**
-   * Get factor.
-   * 
-   * @return int|float
-   */
-  public function getFactor() {
-    return $this->_factor;
-  }
+    /**
+     * Get factor.
+     * 
+     * @return int|float
+     */
+    public function getFactor() {
+        return $this->factor;
+    }
 
-  /**
-   * @var float
-   */
-  protected $_delta = 0;
+    /**
+     * @var float
+     */
+    protected $delta = 0;
 
-  /**
-   * Get delta.
-   * 
-   * @return int|float
-   */
-  public function getDelta() {
-    return $this->_delta;
-  }
+    /**
+     * Get delta.
+     * 
+     * @return int|float
+     */
+    public function getDelta() {
+      return $this->delta;
+    }
 
-  /**
-   * Compute value following the operation internals.
-   * 
-   * @param int|float $a
-   * @param int|float $b
-   */
-  public function compute($value) {
-    return ($value * $this->_factor) + $this->_delta;
-  }
+    /**
+     * Compute value following the operation internals.
+     * 
+     * @param int|float $a
+     * @param int|float $b
+     */
+    public function compute($value) {
+        return ($value * $this->factor) + $this->delta;
+    }
 
-  /**
-   * Get opposite operation.
-   * 
-   * @return Operation
-   */
-  public function getOpposite() {
-    return new self(1 / $this->_factor, (0 - $this->_delta));
-  }
+    /**
+     * Get opposite operation.
+     * 
+     * @return Operation
+     */
+    public function getOpposite() {
+        return new self(1 / $this->factor, (0 - $this->delta));
+    }
 
-  /**
-   * Combine with the given operation into a new instance.
-   */
-  public function getCombination(Operation $operation) {
-    return new self($this->_factor * $operation->_factor, $this->_delta + $operation->_delta);
-  }
+    /**
+     * Combine with the given operation into a new instance.
+     */
+    public function getCombination(Operation $operation) {
+        return new self($this->factor * $operation->factor, $this->delta + $operation->delta);
+    }
 
-  /**
-   * Default constructor.
-   * 
-   * @param int|float $factor = 1
-   * @param int|float $delta = 0;
-   */
-  public function __construct($factor = 1, $delta = 0) {
-    $this->_factor = $factor;
-    $this->_delta  = $delta;
-  }
+    /**
+     * Default constructor.
+     * 
+     * @param int|float $factor = 1
+     * @param int|float $delta = 0;
+     */
+    public function __construct($factor = 1, $delta = 0) {
+        $this->factor = $factor;
+        $this->delta  = $delta;
+    }
 }

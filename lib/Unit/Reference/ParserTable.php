@@ -2,50 +2,49 @@
 
 namespace Unit\Reference;
 
-use Unit\Parsing\ParserInterface;
+use Unit\Parsing\ParserInterface,
+    Unit\System,
+    Unit\SystemDefault,
+    Unit\Type,
+    Unit\Unit;
 
 use \Exception;
-use \SimpleXmlElement;
-
-use Unit\System;
-use Unit\SystemDefault;
-use Unit\Type;
-use Unit\Unit;
 
 class ParserTable extends StaticTable
 {
-  public function __construct(ParserInterface $parser) {
-    $parser->setTable($this);
+    public function __construct(ParserInterface $parser) {
+        $parser->setTable($this);
 
-    $this->_conversionMatrix = new StaticConversionMatrix();
+        $this->conversionMatrix = new StaticConversionMatrix();
 
-    // Register types.
-    foreach ($parser->getTypes() as $type) {
-      $typeIdentifier = $type->getIdentifier();
-      $this->_types[$typeIdentifier] = $type;
+        // Register types.
+        foreach ($parser->getTypes() as $type) {
+            $typeIdentifier = $type->getIdentifier();
+            $this->types[$typeIdentifier] = $type;
 
-      // Register systems for this type.
-      $systems = $parser->getSystems($type);
-      if (empty($systems)) {
-        $systems = array(new SystemDefault($this, $type));
-      }
-      foreach ($systems as $system) {
-        $systemIdentifier = $system->getIdentifier();
-        $this->_systems[$systemIdentifier] = $system;
-        $this->_typeSystems[$typeIdentifier][] = $systemIdentifier;
+            // Register systems for this type.
+            $systems = $parser->getSystems($type);
+            if (empty($systems)) {
+                $systems = array(new SystemDefault($this, $type));
+            }
 
-        // Register Units for this system.
-        foreach ($parser->getUnits($type, $system) as $unit) {
-          $unitIdentifier = $unit->getIdentifier();
-          $unitSymbol = $unit->getSymbol();
-          $this->_units[$unitIdentifier] = $unit;
-          $this->_typeUnits[$typeIdentifier][] = $unitIdentifier;
-          $this->_unitSymbols[$unitSymbol] = $unitIdentifier;
+            foreach ($systems as $system) {
+                $systemIdentifier = $system->getIdentifier();
+                $this->systems[$systemIdentifier] = $system;
+                $this->typeSystems[$typeIdentifier][] = $systemIdentifier;
+
+                // Register Units for this system.
+                foreach ($parser->getUnits($type, $system) as $unit) {
+                    $unitIdentifier = $unit->getIdentifier();
+                    $unitSymbol = $unit->getSymbol();
+                    $this->units[$unitIdentifier] = $unit;
+                    $this->typeUnits[$typeIdentifier][] = $unitIdentifier;
+                    $this->unitSymbols[$unitSymbol] = $unitIdentifier;
+                }
+            }
+
+            // Finally, register conversion matrix.
+            $this->conversionMatrix->setMatrixData($type, $parser->getRawConversionMatrix($type));
         }
-      }
-
-      // Finally, register conversion matrix.
-      $this->_conversionMatrix->addMatrix($type, $parser->getRawConversionMatrix($type));
     }
-  }
 }
