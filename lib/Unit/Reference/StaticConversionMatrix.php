@@ -44,7 +44,7 @@ class StaticConversionMatrix implements ConversionMatrixInterface
     protected function populateMatrix(Type $type) {
         $typeIdentifier = $type->getIdentifier();
 
-        if (isset($this->populated[$typeIdentifier])) {
+        if (!isset($this->matrixes[$typeIdentifier]) || isset($this->populated[$typeIdentifier])) {
             return;
         }
 
